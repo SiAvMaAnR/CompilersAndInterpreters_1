@@ -100,15 +100,38 @@ namespace CompilersAndInterpreters_1.Models
 
         public static bool IsCorrect(DataTable dataTable, List<string> conditions, List<string> alphabet, List<string> finalCondition, List<string> input, out string Analysis)
         {
-            string startPoint = conditions[0];//+
+            List<(string, string)> Log = new List<(string, string)>();
 
+            string Point = conditions[0];//+
 
+            string inpStr = string.Join("", input);
 
+            Log.Add((Point, inpStr));
 
-            Analysis = "XXX";
-            return false;
+            foreach (var item in input)
+            {
+                if (string.IsNullOrEmpty(Point))
+                {
+                    Analysis = "False";
+                    return false;
+                }
+                if (string.IsNullOrEmpty(inpStr)) break;
+                
+
+                Point = dataTable.Rows[conditions.IndexOf(Point)][alphabet.IndexOf(item) + 1].ToString();
+
+                inpStr = inpStr.Remove(inpStr.IndexOf(item), item.Length);
+
+                inpStr = string.IsNullOrEmpty(inpStr) ? "e" : inpStr;
+
+                Log.Add((Point, inpStr));
+            }
+
+            MessageBox.Show(string.Join(" |——\n", Log));
+            Analysis = "True";
+
+            return finalCondition.Contains(Point) && inpStr == "e";
         }
-
 
         public static DataTable GetStartTable(List<string> Conditions, List<string> Alphabet)
         {
