@@ -13,6 +13,8 @@
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Padding" Value="5,1,5,1"/>
                 <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="Black"/>
             </Style.Setters>
             <Style.Resources>
                 <Style TargetType="Border">
@@ -42,7 +44,7 @@
             <Style.Setters>
                 <Setter Property="FontSize" Value="28"/>
                 <Setter Property="FontFamily" Value="Arial"/>
-                <Setter Property="Margin" Value="40,20,40,20"/>
+                <Setter Property="Margin" Value="10,20,10,20"/>
                 <Setter Property="Background" Value="White"/>
                 <Setter Property="BorderThickness" Value="3"/>
                 <Setter Property="BorderBrush" Value="Black"/>
@@ -114,7 +116,7 @@
 
             <Grid Grid.Row="0">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                    <DataGrid ItemsSource="{Binding DataTable.DefaultView}" AutoGenerateColumns="True"/>
+                    <DataGrid CanUserSortColumns="False" MinColumnWidth="50" CanUserAddRows="False" FontSize="20" ItemsSource="{Binding DataTable.DefaultView}" AutoGenerateColumns="True"/>
                 </ScrollViewer>
             </Grid>
 
@@ -122,13 +124,18 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0" MaxHeight="100px" MaxWidth="300px">
-                    <Button Content="Показать" FontSize="28" Click="Button_Click_1"/>
+                    <Label FontSize="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Admittance}"/>
                 </Grid>
-                
+
                 <Grid Grid.Column="1" MaxHeight="100px" MaxWidth="300px">
+                    <Button Content="Таблица" Style="{StaticResource Button}" FontSize="28" Click="Button_Click_1"/>
+                </Grid>
+
+                <Grid Grid.Column="2" MaxHeight="100px" MaxWidth="300px">
                     <Button Content="Запуск" Style="{StaticResource Button}" Click="Button_Click"/>
                 </Grid>
             </Grid>

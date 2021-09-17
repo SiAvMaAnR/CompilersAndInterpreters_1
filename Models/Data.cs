@@ -27,16 +27,5 @@ namespace CompilersAndInterpreters_1.Models
         /// Множество входных значений
         /// </summary>
         public List<string> Input { get; set; }
-
-        /// <summary>
-        /// Булевая допуска
-        /// </summary>
-        public bool Admittance { get; set; }
-
-        /// <summary>
-        /// Анализ
-        /// </summary>
-        public string Analysis { get; set; }
-
     }
 }
