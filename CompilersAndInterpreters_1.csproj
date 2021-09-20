@@ -58,7 +58,15 @@
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\Logic.cs" />
+    <Compile Include="ViewModels\MyMessBoxViewModel.cs" />
+    <Compile Include="View\MyMessBox.xaml.cs">
+      <DependentUpon>MyMessBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Page Include="View\MyMessBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +106,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\gtkinfo.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

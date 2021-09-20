@@ -73,14 +73,6 @@ namespace CompilersAndInterpreters_1.Models
 
         public static void CreateTable(DataTable dataTable)
         {
-            //for (int i = 0; i < dataTable.Rows.Count; i++)
-            //{
-            //    for (int j = 1; j < dataTable.Columns.Count; j++)
-            //    {
-            //        dataTable.Rows[i][j] = "p";
-            //    }
-            //}
-
             dataTable.Rows[0][1] = "p";//a
             dataTable.Rows[0][2] = "q";//b
             dataTable.Rows[0][3] = "";//c
@@ -98,12 +90,11 @@ namespace CompilersAndInterpreters_1.Models
             dataTable.Rows[3][3] = "";
         }
 
-        public static bool IsCorrect(DataTable dataTable, List<string> conditions, List<string> alphabet, List<string> finalCondition, List<string> input, out string Analysis)
+        public static bool IsCorrect(DataTable dataTable, List<string> conditions, List<string> alphabet, List<string> finalCondition, List<string> input, out string MessageAnalysis)
         {
             List<(string, string)> Log = new List<(string, string)>();
 
             string Point = conditions[0];//+
-
             string inpStr = string.Join("", input);
 
             Log.Add((Point, inpStr));
@@ -112,24 +103,20 @@ namespace CompilersAndInterpreters_1.Models
             {
                 if (string.IsNullOrEmpty(Point))
                 {
-                    Analysis = "False";
+                    MessageAnalysis = string.Join(" |——\n", Log);
                     return false;
                 }
                 if (string.IsNullOrEmpty(inpStr)) break;
-                
 
                 Point = dataTable.Rows[conditions.IndexOf(Point)][alphabet.IndexOf(item) + 1].ToString();
 
                 inpStr = inpStr.Remove(inpStr.IndexOf(item), item.Length);
-
                 inpStr = string.IsNullOrEmpty(inpStr) ? "e" : inpStr;
 
                 Log.Add((Point, inpStr));
             }
 
-            MessageBox.Show(string.Join(" |——\n", Log));
-            Analysis = "True";
-
+            MessageAnalysis = string.Join(" |——\n", Log);
             return finalCondition.Contains(Point) && inpStr == "e";
         }
 

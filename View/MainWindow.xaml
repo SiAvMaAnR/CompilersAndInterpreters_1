@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CompilersAndInterpreters_1" xmlns:WpfToolkit="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900" MinHeight="600" MinWidth="900">
+        Title="CaI1" WindowStartupLocation="CenterScreen"  Height="600" Width="900" MinHeight="600" MinWidth="900">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="Text">
             <Style.Setters>
@@ -55,6 +55,27 @@
                 </Style>
             </Style.Resources>
         </Style>
+
+        <Style TargetType="Label" x:Key="IsCorrect">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Admittance}" Value="true">
+                    <Setter Property="Background" Value="#FF41D441"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Admittance}" Value="false">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+            <Style.Setters>
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Style.Setters>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        
     </Window.Resources>
 
     <Grid>
@@ -101,10 +122,7 @@
             </Grid>
 
             <Grid Grid.Row="4">
-                <StackPanel  Style="{StaticResource Panel}">
-                    <Label Content="Анализ" Style="{StaticResource Label}" />
-                    <TextBox Text="{Binding Analysis}" IsReadOnly="True" Style="{StaticResource Text}"/>
-                </StackPanel>
+                    <Button Margin="60,25,60,25" Content="Анализ"  Style="{StaticResource Button}" Click="Button_Click_2"/>
             </Grid>
         </Grid>
 
@@ -128,7 +146,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0" MaxHeight="100px" MaxWidth="300px">
-                    <Label FontSize="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Admittance}"/>
+                    <Label Margin="10,20,10,20" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource IsCorrect}" Content="{Binding Admittance}"/>
                 </Grid>
 
                 <Grid Grid.Column="1" MaxHeight="100px" MaxWidth="300px">

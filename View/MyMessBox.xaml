@@ -1,0 +1,16 @@
+﻿<Window x:Class="CompilersAndInterpreters_1.MyMessageBox.MyMessBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompilersAndInterpreters_1.MyMessageBox"
+        mc:Ignorable="d"
+        Title="Analysis"  Height="350" Width="500" WindowStartupLocation="CenterScreen" Icon="gtkinfo.ico">
+
+
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Label Content="{Binding Message}" FontFamily="Arial" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        </ScrollViewer>
+    </Grid>
+</Window>

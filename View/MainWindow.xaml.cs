@@ -1,4 +1,5 @@
 ﻿using CompilersAndInterpreters_1.Models;
+using CompilersAndInterpreters_1.MyMessageBox;
 using CompilersAndInterpreters_1.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,8 @@ namespace CompilersAndInterpreters_1
     public partial class MainWindow : Window
     {
         public MainViewModel Model = new MainViewModel();
+
+        public string MessageAnalysis = "";
 
         public MainWindow()
         {
@@ -60,16 +63,24 @@ namespace CompilersAndInterpreters_1
             }
         }
 
+        private void GetData()
+        {
+            Model.BasicData = Logic.GetCorrectData(Model.Conditions, Model.Alphabet, Model.FinalCondition, Model.Input);
+
+            Logic.CheckDataCorrection(Model.BasicData);
+        }
+
+        //Запуск
         private void Start()
         {
             GetData();
 
             Logic.CheckTableCorrection(Model.DataTable, Model.BasicData);
 
-            Model.Admittance = Logic.IsCorrect(Model.DataTable, Model.BasicData.Conditions, Model.BasicData.Alphabet, Model.BasicData.FinalCondition, Model.BasicData.Input, out string Analysis);
-            Model.Analysis = Analysis;
+            Model.Admittance = Logic.IsCorrect(Model.DataTable, Model.BasicData.Conditions, Model.BasicData.Alphabet, Model.BasicData.FinalCondition, Model.BasicData.Input, out MessageAnalysis);
         }
 
+        //Таблица
         private void Table()
         {
             GetData();
@@ -79,11 +90,15 @@ namespace CompilersAndInterpreters_1
             Logic.CreateTable(Model.DataTable);
         }
 
-        private void GetData()
+        //Анализ
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Model.BasicData = Logic.GetCorrectData(Model.Conditions, Model.Alphabet, Model.FinalCondition, Model.Input);
-
-            Logic.CheckDataCorrection(Model.BasicData);
+            if (!string.IsNullOrEmpty(MessageAnalysis))
+            {
+                MyMessBox myMessageBox = new MyMessBox();
+                myMessageBox.PrintAnalysis(MessageAnalysis);
+                myMessageBox.Show();
+            }
         }
     }
 }
