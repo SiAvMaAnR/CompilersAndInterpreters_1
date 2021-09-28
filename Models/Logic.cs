@@ -47,17 +47,6 @@ namespace CompilersAndInterpreters_1.Models
             {
                 throw new Exception("Вход не корректен!");
             }
-            #region Temp
-
-            //string str = string.Join(" ", data.Conditions) + "\n"
-            //           + string.Join(" ", data.Alphabet) + "\n"
-            //           + string.Join(" ", data.FinalCondition) + "\n"
-            //           + string.Join(" ", data.Input) + "\n"
-            //           + string.Join(" ", data.Admittance) + "\n"
-            //           + string.Join(" ", data.Analysis);
-
-            //MessageBox.Show(str);
-            #endregion
         }
 
         public static void CheckTableCorrection(DataTable dataTable, Data basicData)
