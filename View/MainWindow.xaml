@@ -116,7 +116,7 @@
 
             <Grid Grid.Row="3">
                 <StackPanel  Style="{StaticResource Panel}">
-                    <Label Content="Входные символы" Style="{StaticResource Label}" />
+                    <Label Content="Цепочка" Style="{StaticResource Label}" />
                     <TextBox Text="{Binding Input}" Style="{StaticResource Text}"/>
                 </StackPanel>
             </Grid>

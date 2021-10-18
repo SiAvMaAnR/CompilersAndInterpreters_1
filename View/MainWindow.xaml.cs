@@ -36,7 +36,7 @@ namespace CompilersAndInterpreters_1
             Model.Conditions = "p,q,k,r";
             Model.Alphabet = "a,b,c";
             Model.FinalCondition = "r";
-            Model.Input = "a,b,c,b,a,c,a,b";
+            Model.Input = "abcbacab";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

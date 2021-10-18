@@ -26,6 +26,6 @@ namespace CompilersAndInterpreters_1.Models
         /// <summary>
         /// Множество входных значений
         /// </summary>
-        public List<string> Input { get; set; }
+        public string Input { get; set; }
     }
 }

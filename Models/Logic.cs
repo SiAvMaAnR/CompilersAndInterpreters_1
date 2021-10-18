@@ -17,13 +17,13 @@ namespace CompilersAndInterpreters_1.Models
                 Conditions = conditions.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList(),
                 Alphabet = alphabet.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList(),
                 FinalCondition = finalCondition.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList(),
-                Input = input.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()
+                Input = input
             };
         }
 
         public static void CheckDataCorrection(Data data)
         {
-            if (data.Conditions.Count == 0 || data.Alphabet.Count == 0 || data.FinalCondition.Count == 0 || data.Input.Count == 0)
+            if (data.Conditions.Count == 0 || data.Alphabet.Count == 0 || data.FinalCondition.Count == 0 || data.Input.Length == 0)
             {
                 throw new Exception("Заполните пустые поля!");
             }
@@ -43,7 +43,7 @@ namespace CompilersAndInterpreters_1.Models
                 throw new Exception("Заключение не корректно!");
             }
 
-            if (!data.Input.All(x => data.Alphabet.Contains(x)))
+            if (!data.Input.All(x => data.Alphabet.Contains(x.ToString())))
             {
                 throw new Exception("Вход не корректен!");
             }
@@ -79,7 +79,7 @@ namespace CompilersAndInterpreters_1.Models
             dataTable.Rows[3][3] = "";
         }
 
-        public static bool IsCorrect(DataTable dataTable, List<string> conditions, List<string> alphabet, List<string> finalCondition, List<string> input, out string MessageAnalysis)
+        public static bool IsCorrect(DataTable dataTable, List<string> conditions, List<string> alphabet, List<string> finalCondition, string input, out string MessageAnalysis)
         {
             List<(string, string)> Log = new List<(string, string)>();
 
@@ -97,9 +97,9 @@ namespace CompilersAndInterpreters_1.Models
                 }
                 if (string.IsNullOrEmpty(inpStr)) break;
 
-                Point = dataTable.Rows[conditions.IndexOf(Point)][alphabet.IndexOf(item) + 1].ToString();
+                Point = dataTable.Rows[conditions.IndexOf(Point)][alphabet.IndexOf(item.ToString()) + 1].ToString();
 
-                inpStr = inpStr.Remove(inpStr.IndexOf(item), item.Length);
+                inpStr = inpStr.Remove(inpStr.IndexOf(item), 1);
                 inpStr = string.IsNullOrEmpty(inpStr) ? "e" : inpStr;
 
                 Log.Add((Point, inpStr));
