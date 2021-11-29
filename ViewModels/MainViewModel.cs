@@ -9,8 +9,28 @@ using System.Windows;
 
 namespace CompilersAndInterpreters_1.ViewModels
 {
+    public enum IsCorrect
+    {
+        Undefined,
+        Correct,
+        InCorrect
+    }
+
     public class MainViewModel : BaseViewModel
     {
+        private IsCorrect isCorrect = IsCorrect.Undefined;
+        public IsCorrect IsCorrect
+        {
+            get { return isCorrect; }
+            set
+            {
+                isCorrect = value;
+                OnPropertyChanged(nameof(isCorrect));
+            }
+        }
+
+
+
         private string conditions;
         /// <summary>
         /// Множество состояний
@@ -64,20 +84,6 @@ namespace CompilersAndInterpreters_1.ViewModels
             {
                 input = value;
                 OnPropertyChanged(nameof(input));
-            }
-        }
-
-        private bool admittance;
-        /// <summary>
-        /// Булевая допуска
-        /// </summary>
-        public bool Admittance
-        {
-            get => admittance;
-            set
-            {
-                admittance = value;
-                OnPropertyChanged(nameof(admittance));
             }
         }
 

@@ -62,21 +62,35 @@ namespace CompilersAndInterpreters_1.Models
 
         public static void CreateTable(DataTable dataTable)
         {
-            dataTable.Rows[0][1] = "p";//a
-            dataTable.Rows[0][2] = "q";//b
-            dataTable.Rows[0][3] = "";//c
+            dataTable.Rows[0][1] = "q2";
+            dataTable.Rows[0][2] = "";
+            dataTable.Rows[0][3] = "q4";
+            dataTable.Rows[0][4] = "";
+            dataTable.Rows[0][5] = "";
 
-            dataTable.Rows[1][1] = "k";
-            dataTable.Rows[1][2] = "";
-            dataTable.Rows[1][3] = "p";
+            dataTable.Rows[1][1] = "";
+            dataTable.Rows[1][2] = "q3";
+            dataTable.Rows[1][3] = "";
+            dataTable.Rows[1][4] = "q5";
+            dataTable.Rows[1][5] = "";
 
-            dataTable.Rows[2][1] = "";
-            dataTable.Rows[2][2] = "r";
-            dataTable.Rows[2][3] = "q";
+            dataTable.Rows[2][1] = "q2";
+            dataTable.Rows[2][2] = "";
+            dataTable.Rows[2][3] = "";
+            dataTable.Rows[2][4] = "";
+            dataTable.Rows[2][5] = "";
 
             dataTable.Rows[3][1] = "";
             dataTable.Rows[3][2] = "";
             dataTable.Rows[3][3] = "";
+            dataTable.Rows[3][4] = "q5";
+            dataTable.Rows[3][5] = "q2";
+
+            dataTable.Rows[4][1] = "";
+            dataTable.Rows[4][2] = "q1";
+            dataTable.Rows[4][3] = "";
+            dataTable.Rows[4][4] = "";
+            dataTable.Rows[4][5] = "q4";
         }
 
         public static bool IsCorrect(DataTable dataTable, List<string> conditions, List<string> alphabet, List<string> finalCondition, string input, out string MessageAnalysis)

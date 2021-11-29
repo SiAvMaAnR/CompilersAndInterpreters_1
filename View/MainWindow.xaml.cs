@@ -33,10 +33,10 @@ namespace CompilersAndInterpreters_1
             InitializeComponent();
             DataContext = Model;
 
-            Model.Conditions = "p,q,k,r";
-            Model.Alphabet = "a,b,c";
-            Model.FinalCondition = "r";
-            Model.Input = "abcbacab";
+            Model.Conditions = "q1,q2,q3,q4,q5";
+            Model.Alphabet = "a,b,c,d,h";
+            Model.FinalCondition = "q2,q4";
+            Model.Input = "abadbcdh";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -77,7 +77,8 @@ namespace CompilersAndInterpreters_1
 
             Logic.CheckTableCorrection(Model.DataTable, Model.BasicData);
 
-            Model.Admittance = Logic.IsCorrect(Model.DataTable, Model.BasicData.Conditions, Model.BasicData.Alphabet, Model.BasicData.FinalCondition, Model.BasicData.Input, out MessageAnalysis);
+            Model.IsCorrect = (Logic.IsCorrect(Model.DataTable, Model.BasicData.Conditions, Model.BasicData.Alphabet, Model.BasicData.FinalCondition, Model.BasicData.Input, out MessageAnalysis))
+                ?IsCorrect.Correct:IsCorrect.InCorrect ;
         }
 
         //Таблица

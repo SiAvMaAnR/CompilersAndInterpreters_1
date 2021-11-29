@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CompilersAndInterpreters_1" xmlns:WpfToolkit="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
         mc:Ignorable="d"
-        Title="CaI1" WindowStartupLocation="CenterScreen"  Height="600" Width="900" MinHeight="600" MinWidth="900">
+        Title="CaI1" WindowStartupLocation="CenterScreen"  Height="720" Width="1280" MinHeight="600" MinWidth="900">
     <Window.Resources>
         <Style TargetType="TextBox" x:Key="Text">
             <Style.Setters>
@@ -13,12 +13,12 @@
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Padding" Value="5,1,5,1"/>
                 <Setter Property="TextAlignment" Value="Center"/>
-                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="BorderBrush" Value="Black"/>
             </Style.Setters>
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="7"/>
+                    <Setter Property="CornerRadius" Value="4"/>
                 </Style>
             </Style.Resources>
         </Style>
@@ -28,108 +28,126 @@
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="FontFamily" Value="Arial"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="16"/>
             </Style.Setters>
         </Style>
 
         <Style TargetType="StackPanel" x:Key="Panel">
             <Style.Setters>
-                <Setter Property="Margin" Value="40,0,40,0"/>
+                <Setter Property="Margin" Value="10,0,10,0"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="MaxWidth" Value="400px"/>
             </Style.Setters>
         </Style>
 
         <Style TargetType="Button" x:Key="Button">
             <Style.Setters>
-                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="FontSize" Value="24"/>
                 <Setter Property="FontFamily" Value="Arial"/>
-                <Setter Property="Margin" Value="10,20,10,20"/>
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="Margin" Value="10,10,10,10"/>
+                <!--<Setter Property="Background" Value="White"/>-->
+                <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="BorderBrush" Value="Black"/>
             </Style.Setters>
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </Style.Resources>
         </Style>
 
         <Style TargetType="Label" x:Key="IsCorrect">
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Admittance}" Value="true">
-                    <Setter Property="Background" Value="#FF41D441"/>
+                <DataTrigger Binding="{Binding IsCorrect}" Value="0">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Admittance}" Value="false">
+                <DataTrigger Binding="{Binding IsCorrect}" Value="1">
+                    <Setter Property="Background" Value="#00FF00"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Content" Value="Корректно"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsCorrect}" Value="2">
                     <Setter Property="Background" Value="Red"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Content" Value="Не корректно"/>
+                    <Setter Property="BorderThickness" Value="1"/>
                 </DataTrigger>
             </Style.Triggers>
             <Style.Setters>
-                <Setter Property="BorderThickness" Value="3"/>
                 <Setter Property="BorderBrush" Value="Black"/>
             </Style.Setters>
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="8"/>
+                    <Setter Property="Margin" Value="10"/>
+
                 </Style>
             </Style.Resources>
         </Style>
-        
+
     </Window.Resources>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40*"/>
-            <ColumnDefinition Width="60*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="85*"/>
+        </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Margin="0,20,0,20">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,20,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Column="0">
                 <StackPanel  Style="{StaticResource Panel}">
                     <Label Content="Множество состояний" Style="{StaticResource Label}" />
                     <TextBox Text="{Binding Conditions}" Style="{StaticResource Text}"/>
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Column="1">
                 <StackPanel  Style="{StaticResource Panel}">
                     <Label Content="Алфавит" Style="{StaticResource Label}" />
                     <TextBox Text="{Binding Alphabet}" Style="{StaticResource Text}"/>
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Column="2">
                 <StackPanel  Style="{StaticResource Panel}">
                     <Label Content="Заключительные состояния" Style="{StaticResource Label}" />
                     <TextBox Text="{Binding FinalCondition}" Style="{StaticResource Text}"/>
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="3">
+            <Grid Grid.Column="3">
                 <StackPanel  Style="{StaticResource Panel}">
                     <Label Content="Цепочка" Style="{StaticResource Label}" />
                     <TextBox Text="{Binding Input}" Style="{StaticResource Text}"/>
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="4">
-                    <Button Margin="60,25,60,25" Content="Анализ"  Style="{StaticResource Button}" Click="Button_Click_2"/>
+            <Grid Grid.Column="4" >
+                <Button Content="Построить" Margin="20,10,20,0" FontSize="24" Click="Button_Click_1">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="1" Margin="0,20,0,20">
+        <Grid Grid.Row="1" Margin="0,20,0,20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="20*"/>
+                <RowDefinition Height="85*"/>
+                <RowDefinition Height="15*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -138,7 +156,7 @@
                 </ScrollViewer>
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" MaxHeight="100px">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -146,11 +164,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0" MaxHeight="100px" MaxWidth="300px">
-                    <Label Margin="10,20,10,20" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource IsCorrect}" Content="{Binding Admittance}"/>
+                    <Label Margin="10,0,10,0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource IsCorrect}"/>
                 </Grid>
 
                 <Grid Grid.Column="1" MaxHeight="100px" MaxWidth="300px">
-                    <Button Content="Таблица" Style="{StaticResource Button}" FontSize="28" Click="Button_Click_1"/>
+                    <Button Content="Анализ"  Style="{StaticResource Button}" Click="Button_Click_2"/>
+
                 </Grid>
 
                 <Grid Grid.Column="2" MaxHeight="100px" MaxWidth="300px">
