@@ -35,7 +35,7 @@ namespace CompilersAndInterpreters_1
 
             Model.Conditions = "p,q,k,r";
             Model.Alphabet = "a,b,c";
-            Model.FinalCondition = "r";
+            Model.FinalCondition = "r,p";
             Model.Input = "abcbacab";
         }
 

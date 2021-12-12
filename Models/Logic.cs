@@ -113,7 +113,7 @@ namespace CompilersAndInterpreters_1.Models
         {
             DataTable dataTable = new DataTable();
 
-            dataTable.Columns.Add("Z").ReadOnly = true;
+            dataTable.Columns.Add("-").ReadOnly = true;
 
             foreach (var item in Alphabet)
             {

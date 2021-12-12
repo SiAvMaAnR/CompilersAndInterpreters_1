@@ -10,15 +10,15 @@
         <Style TargetType="TextBox" x:Key="Text">
             <Style.Setters>
                 <Setter Property="FontFamily" Value="Arial"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="18"/>
                 <Setter Property="Padding" Value="5,1,5,1"/>
                 <Setter Property="TextAlignment" Value="Center"/>
-                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="BorderBrush" Value="Black"/>
             </Style.Setters>
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="7"/>
+                    <Setter Property="CornerRadius" Value="4"/>
                 </Style>
             </Style.Resources>
         </Style>
@@ -28,7 +28,7 @@
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="FontFamily" Value="Arial"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="16"/>
             </Style.Setters>
         </Style>
 
@@ -42,16 +42,16 @@
 
         <Style TargetType="Button" x:Key="Button">
             <Style.Setters>
-                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontFamily" Value="Arial"/>
                 <Setter Property="Margin" Value="10,20,10,20"/>
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="BorderThickness" Value="3"/>
-                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="Background" Value="#FFDCD9D9"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="#FF747CFF"/>
             </Style.Setters>
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </Style.Resources>
         </Style>
@@ -66,25 +66,25 @@
                 </DataTrigger>
             </Style.Triggers>
             <Style.Setters>
-                <Setter Property="BorderThickness" Value="3"/>
-                <Setter Property="BorderBrush" Value="Black"/>
+                <!--<Setter Property="BorderThickness" Value="2"/>-->
+                <Setter Property="BorderBrush" Value="#FFBA8A8A"/>
             </Style.Setters>
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </Style.Resources>
         </Style>
-        
+
     </Window.Resources>
 
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="40*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Margin="0,20,0,20">
+        <Grid Grid.Column="1" Margin="0,20,0,20">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -121,42 +121,42 @@
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="4">
-                    <Button Margin="60,25,60,25" Content="Анализ"  Style="{StaticResource Button}" Click="Button_Click_2"/>
+            <Grid Grid.Row="4" MaxHeight="100px" MaxWidth="300px">
+                <Button Margin="25,20" Content="Создать таблицу" Style="{StaticResource Button}" Click="Button_Click_1"/>
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="1" Margin="0,20,0,20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="20*"/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Margin="0,20,0,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                    <DataGrid CanUserSortColumns="False" MinColumnWidth="50" CanUserAddRows="False" FontSize="20" ItemsSource="{Binding DataTable.DefaultView}" AutoGenerateColumns="True"/>
-                </ScrollViewer>
-            </Grid>
-
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Grid Grid.Column="0" MaxHeight="100px" MaxWidth="300px">
-                    <Label Margin="10,20,10,20" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource IsCorrect}" Content="{Binding Admittance}"/>
+                <Grid Grid.Row="0">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <DataGrid CanUserSortColumns="False" MinColumnWidth="50" CanUserAddRows="False" FontSize="20" ItemsSource="{Binding DataTable.DefaultView}" AutoGenerateColumns="True"/>
+                    </ScrollViewer>
                 </Grid>
 
-                <Grid Grid.Column="1" MaxHeight="100px" MaxWidth="300px">
-                    <Button Content="Таблица" Style="{StaticResource Button}" FontSize="28" Click="Button_Click_1"/>
-                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="2" MaxHeight="100px" MaxWidth="300px">
-                    <Button Content="Запуск" Style="{StaticResource Button}" Click="Button_Click"/>
+                    <Grid Grid.Column="1" MaxHeight="100px" MaxWidth="300px">
+                        <Label Margin="10,20,10,20" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource IsCorrect}" Content="{Binding Admittance}"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0">
+                        <Button Content="Анализ"  Style="{StaticResource Button}" Click="Button_Click_2"/>
+                    </Grid>
+
+                    <Grid Grid.Column="2" MaxHeight="100px" MaxWidth="300px">
+                        <Button Content="Запуск" Style="{StaticResource Button}" Click="Button_Click"/>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
-    </Grid>
 </Window>
